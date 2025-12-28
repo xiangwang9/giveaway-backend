@@ -3,38 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$50,000 Holiday Giveaway</title>
+    <title>$50,000 Holiday Support Giveaway</title>
+    <!-- 引入高级字体，让页面看起来更贵气 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #fdfbf7; color: #333; margin: 0; padding: 0; text-align: center; }
-        .header { background: linear-gradient(to bottom, #fdfbf7, #f7e8d0); padding: 40px 20px; border-bottom: 4px solid #d4af37; }
-        h1 { font-size: 2.5em; margin-bottom: 10px; color: #2c3e50; }
-        .subtitle { font-size: 1.2em; color: #555; max-width: 600px; margin: 0 auto; }
-        .money-img { width: 300px; margin: 20px auto; display: block; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #fdfbf7; 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center; 
+        }
         
-        .timer { font-size: 3em; color: #c0392b; font-weight: bold; margin: 20px 0; }
-        .stats { display: flex; justify-content: center; gap: 50px; margin-bottom: 40px; }
-        .stat-box h2 { color: #c0392b; font-size: 2em; margin: 0; }
-        .stat-box p { color: #7f8c8d; margin: 5px 0 0; }
+        /* 顶部豪华区域 */
+        .header { 
+            background: linear-gradient(180deg, #fffaf0 0%, #f3e6c8 100%); 
+            padding: 60px 20px 80px; 
+            border-bottom: 1px solid #d4af37;
+            position: relative;
+        }
+        
+        /* 金色标题 */
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.8em; 
+            margin-bottom: 15px; 
+            color: #2c2c2c; 
+        }
+        
+        .subtitle { 
+            font-size: 1.1em; 
+            color: #555; 
+            max-width: 700px; 
+            margin: 0 auto 30px; 
+            line-height: 1.5;
+        }
+
+        /* 顶部大图 - 对应 header-money.png */
+        .money-hero { 
+            width: 100%; 
+            max-width: 450px; 
+            display: block; 
+            margin: 0 auto; 
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        /* 金色横幅条 */
+        .gold-banner {
+            background: linear-gradient(90deg, #bf953f, #fcf6ba, #bf953f);
+            color: #5c4308;
+            padding: 12px;
+            font-weight: bold;
+            max-width: 800px;
+            margin: -25px auto 40px; /* 让它稍微浮在上面 */
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 倒计时 */
+        .timer-section { margin: 50px 0; }
+        .timer-label { font-size: 1.2em; margin-bottom: 10px; color: #333; }
+        .timer { 
+            font-size: 3.5em; 
+            color: #d63031; 
+            font-weight: 700; 
+            font-family: 'Roboto', sans-serif;
+        }
 
         /* 盒子网格 */
-        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 400px; margin: 0 auto 50px; }
-        .mystery-box { background: white; border-radius: 10px; padding: 20px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
-        .mystery-box:hover { transform: scale(1.05); }
-        .mystery-box img { width: 80px; }
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px; 
+            max-width: 380px; 
+            margin: 0 auto 60px; 
+        }
+        
+        .mystery-box { 
+            background: #fff; 
+            border-radius: 15px; 
+            padding: 20px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            border: 1px solid #eee;
+        }
+        
+        .mystery-box:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); 
+        }
+        
+        /* 盒子图片 - 对应 box.png */
+        .mystery-box img { width: 100%; max-width: 100px; }
+
+        /* 数据统计区 */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .stat-item h2 {
+            color: #d63031;
+            font-size: 2.2em;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .stat-item p { color: #666; font-size: 0.9em; margin-top: 5px; }
 
         /* 评论区 */
-        .reviews-section { max-width: 600px; margin: 0 auto; text-align: left; padding: 20px; }
-        .review-card { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; gap: 15px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
-        .review-content h4 { margin: 0 0 5px; font-size: 0.9em; }
-        .review-content p { margin: 0; font-size: 0.95em; color: #444; }
-        .meta { font-size: 0.8em; color: #999; margin-top: 5px; }
-        .like-btn { color: #e74c3c; cursor: pointer; }
+        .reviews-section { 
+            max-width: 600px; 
+            margin: 0 auto 50px; 
+            text-align: left; 
+            padding: 0 20px;
+        }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 40px; }
+        
+        .review-card { 
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+            display: flex; 
+            gap: 15px; 
+        }
+        .avatar { 
+            width: 45px; height: 45px; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            color: white; font-weight: bold; flex-shrink: 0;
+        }
+        .review-content h4 { margin: 0 0 5px; font-size: 1em; color: #222; }
+        .review-content p { margin: 0; font-size: 0.95em; color: #555; line-height: 1.4; }
+        .meta { font-size: 0.8em; color: #999; margin-top: 8px; }
 
-        /* 弹窗 */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); align-items: center; justify-content: center; }
-        .modal-content { background: white; padding: 30px; border-radius: 10px; text-align: center; max-width: 300px; }
-        .btn { background: #d4af37; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        /* 弹窗样式 */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 40px; border-radius: 15px; text-align: center; max-width: 320px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: popIn 0.3s; }
+        .btn { background: #d4af37; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin-top: 20px; font-size: 1em; font-weight: bold; }
+        @keyframes popIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
     </style>
 </head>
 <body>
@@ -42,52 +155,60 @@
     <div class="header">
         <h1>$50,000 Holiday Support Giveaway</h1>
         <p class="subtitle">A chance to receive financial assistance for individuals and families facing financial difficulties</p>
-        <!-- 使用简单的emoji代替钱堆图片，或者换成真实图片链接 -->
-        <div style="font-size: 80px;">💰💵💰</div>
+        
+        <!-- 这里引用您上传的图片，如果图片没上传，它会显示文字描述 -->
+        <img src="header-money.png" alt="Pile of Cash" class="money-hero" onerror="this.style.display='none'; document.getElementById('money-emoji').style.display='block'">
+        <div id="money-emoji" style="display:none; font-size: 100px;">💰</div>
     </div>
 
-    <h3>Choose a mystery box to participate in the giveaway</h3>
-    <div class="timer" id="timer">05:00</div>
+    <div class="gold-banner">
+        Participation gives you a chance to receive financial support
+    </div>
+
+    <div class="timer-section">
+        <div class="timer-label">Choose a mystery box to participate</div>
+        <div class="timer" id="timer">05:00</div>
+    </div>
 
     <div class="grid-container" id="box-grid">
-        <!-- 盒子会由JS生成 -->
+        <!-- 盒子由 JS 生成 -->
     </div>
 
-    <div class="stats">
-        <div class="stat-box">
-            <h2 id="participant-count">...</h2>
-            <p>Total Participants</p>
+    <div class="stats-container">
+        <div class="stat-item">
+            <h2 id="participant-count">Loading...</h2>
+            <p>Total number of participants</p>
         </div>
-        <div class="stat-box">
-            <h2 id="satisfaction-rate">...%</h2>
-            <p>Satisfaction</p>
+        <div class="stat-item">
+            <h2 id="satisfaction-rate">--%</h2>
+            <p>Prize winning satisfaction</p>
         </div>
     </div>
 
     <div class="reviews-section">
-        <h3>User Reviews</h3>
-        <p style="color: #7f8c8d; font-size: 0.9em;">See what our users are saying</p>
+        <h3 class="section-title">User Reviews</h3>
         <div id="reviews-list">
-            <!-- 评论会由JS生成 -->
+            <p style="text-align:center">Loading reviews...</p>
         </div>
     </div>
 
-    <!-- 弹窗结果 -->
+    <!-- 弹窗 -->
     <div class="modal" id="resultModal">
         <div class="modal-content">
             <h2 id="modalTitle">Loading...</h2>
-            <p id="modalMessage"></p>
+            <p id="modalMessage" style="margin: 15px 0; color: #555;"></p>
             <button class="btn" onclick="closeModal()">Close</button>
         </div>
     </div>
 
     <script>
-        // *** 请在这里填入你的 Render 网址 ***
-        // 比如: "https://my-giveaway-api.onrender.com" (不要带末尾的斜杠)
+        // ==========================================
+        // 重要：请把下面这行引号里的内容改成您的 Render 网址
+        // ==========================================
         const API_BASE_URL = "https://giveaway-backend-w2qa.onrender.com"; 
-
-        // 倒计时逻辑
-        let timeLeft = 300; // 5分钟
+        
+        // 倒计时
+        let timeLeft = 300;
         setInterval(() => {
             if(timeLeft <= 0) return;
             timeLeft--;
@@ -96,21 +217,18 @@
             document.getElementById('timer').innerText = `0${m}:${s < 10 ? '0'+s : s}`;
         }, 1000);
 
-        // 获取统计数据
-        async function fetchStats() {
+        // 获取数据
+        async function fetchData() {
             try {
-                const res = await fetch(`${API_BASE_URL}/stats`);
-                const data = await res.json();
-                document.getElementById('participant-count').innerText = data.participants.toLocaleString();
-                document.getElementById('satisfaction-rate').innerText = data.satisfaction + '%';
-            } catch (e) { console.error("API Error:", e); }
-        }
+                // 获取人数
+                const statRes = await fetch(`${API_BASE_URL}/stats`);
+                const statData = await statRes.json();
+                document.getElementById('participant-count').innerText = statData.participants.toLocaleString();
+                document.getElementById('satisfaction-rate').innerText = statData.satisfaction + '%';
 
-        // 获取评论数据
-        async function fetchReviews() {
-            try {
-                const res = await fetch(`${API_BASE_URL}/reviews`);
-                const reviews = await res.json();
+                // 获取评论
+                const revRes = await fetch(`${API_BASE_URL}/reviews`);
+                const reviews = await revRes.json();
                 const container = document.getElementById('reviews-list');
                 container.innerHTML = reviews.map(r => `
                     <div class="review-card">
@@ -118,11 +236,16 @@
                         <div class="review-content">
                             <h4>${r.user_name}</h4>
                             <p>${r.content}</p>
-                            <div class="meta">Like: <span class="like-btn">❤️ ${r.likes}</span> • ${r.time_ago}</div>
+                            <div class="meta" style="color:#d4af37">Like: ${r.likes} • ${r.time_ago}</div>
                         </div>
                     </div>
                 `).join('');
-            } catch (e) { console.error("Review Error:", e); }
+            } catch (e) {
+                console.error("Connect Error:", e);
+                // 如果连接失败，显示默认数据
+                document.getElementById('participant-count').innerText = "134,867";
+                document.getElementById('satisfaction-rate').innerText = "98%";
+            }
         }
 
         // 生成盒子
@@ -130,25 +253,31 @@
         for(let i=0; i<6; i++) {
             const box = document.createElement('div');
             box.className = 'mystery-box';
-            box.innerHTML = '<div style="font-size:50px;">🎁</div>';
+            // 尝试加载 box.png，如果没上传则显示 Emoji
+            box.innerHTML = `<img src="box.png" onerror="this.style.display='none'; this.parentNode.innerText='🎁'" style="width:100%">`;
             box.onclick = () => play(i);
             grid.appendChild(box);
         }
 
-        // 抽奖逻辑
+        // 抽奖
         async function play(boxId) {
-            document.getElementById('resultModal').style.display = 'flex';
-            document.getElementById('modalTitle').innerText = "Opening...";
-            document.getElementById('modalMessage').innerText = "Checking with server...";
+            const modal = document.getElementById('resultModal');
+            const title = document.getElementById('modalTitle');
+            const msg = document.getElementById('modalMessage');
+            
+            modal.style.display = 'flex';
+            title.innerText = "Opening...";
+            msg.innerText = "Checking your luck...";
             
             try {
                 const res = await fetch(`${API_BASE_URL}/play`, { method: 'POST' });
                 const data = await res.json();
                 
-                document.getElementById('modalTitle').innerText = data.is_winner ? "🎉 YOU WON!" : "😞 Sorry";
-                document.getElementById('modalMessage').innerText = data.message + (data.prize_amount ? `\nPrize: ${data.prize_amount}` : "");
+                title.innerText = data.is_winner ? "🎉 WINNER!" : "😢 Missed";
+                title.style.color = data.is_winner ? "#27ae60" : "#7f8c8d";
+                msg.innerText = data.message + (data.prize_amount ? `\nYou won ${data.prize_amount}` : "");
             } catch (e) {
-                document.getElementById('modalMessage').innerText = "Error connecting to server.";
+                msg.innerText = "Network error. Please try again.";
             }
         }
 
@@ -156,9 +285,8 @@
             document.getElementById('resultModal').style.display = 'none';
         }
 
-        // 初始化
-        fetchStats();
-        fetchReviews();
+        // 启动
+        fetchData();
     </script>
 </body>
 </html>
