@@ -4,45 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$50,000 Holiday Support Giveaway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- 引入 Roboto 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #fdfbf7; color: #333; margin: 0; padding: 0; text-align: center; }
-        
-        .header { background: linear-gradient(180deg, #fffaf0 0%, #f3e6c8 100%); padding: 60px 20px 80px; border-bottom: 1px solid #d4af37; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin-bottom: 15px; color: #2c2c2c; }
-        .subtitle { font-size: 1.1em; color: #555; max-width: 700px; margin: 0 auto 30px; line-height: 1.5; }
-        
-        .money-hero { width: 100%; max-width: 450px; display: block; margin: 0 auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+        /* 全局重置 */
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; padding: 0; 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #fdfbf7; /* 保持背景色与原来一致 */
+            color: #333;
+        }
 
-        .gold-banner { background: linear-gradient(90deg, #bf953f, #fcf6ba, #bf953f); color: #5c4308; padding: 12px; font-weight: bold; max-width: 800px; margin: -25px auto 40px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); position: relative; z-index: 10; }
+        /* --- 顶部 Header 区域 (保持原样) --- */
+        .header { 
+            background: linear-gradient(180deg, #fffaf0 0%, #f3e6c8 100%); 
+            padding: 60px 20px 80px; 
+            border-bottom: 1px solid #d4af37; 
+            text-align: center;
+        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin: 0 0 15px; color: #2c2c2c; }
+        .subtitle { font-size: 1.1em; color: #555; max-width: 700px; margin: 0 auto 30px; }
+        .money-hero { width: 100%; max-width: 450px; display: block; margin: 0 auto; }
+        
+        /* 金色横幅 */
+        .gold-banner { 
+            background: linear-gradient(90deg, #bf953f, #fcf6ba, #bf953f); 
+            color: #5c4308; padding: 12px; font-weight: bold; 
+            max-width: 800px; margin: -25px auto 40px; 
+            border-radius: 5px; text-align: center; position: relative; z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-        .timer-section { margin: 50px 0; }
-        .timer-label { font-size: 1.2em; margin-bottom: 10px; color: #333; }
+        /* --- 中间互动区 --- */
+        .timer-section { text-align: center; margin: 50px 0; }
         .timer { font-size: 3.5em; color: #d63031; font-weight: 700; }
+        
+        .grid-container { 
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; 
+            max-width: 380px; margin: 0 auto 60px; 
+        }
+        .mystery-box { 
+            background: #fff; border-radius: 15px; padding: 20px; 
+            cursor: pointer; border: 1px solid #eee; transition: transform 0.2s;
+        }
+        .mystery-box:hover { transform: translateY(-5px); }
+        .mystery-box img { width: 100%; }
 
-        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 380px; margin: 0 auto 60px; }
-        .mystery-box { background: #fff; border-radius: 15px; padding: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; border: 1px solid #eee; }
-        .mystery-box:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
-        .mystery-box img { width: 100%; max-width: 100px; }
-
-        .stats-container { display: flex; justify-content: center; gap: 60px; margin-bottom: 80px; }
+        .stats-container { display: flex; justify-content: center; gap: 60px; margin-bottom: 80px; text-align: center;}
         .stat-item h2 { color: #d63031; font-size: 2.2em; margin: 0; font-family: 'Playfair Display', serif; }
-        .stat-item p { color: #666; font-size: 0.9em; margin-top: 5px; }
+        
+        /* --- 核心修改：评论区 (完全基于您提供的 MasterGo 代码) --- */
+        .reviews-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 让评论居中 */
+            padding-bottom: 80px;
+        }
 
-        .reviews-section { max-width: 600px; margin: 0 auto 50px; text-align: left; padding: 0 20px; }
-        .section-title { text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 40px; }
-        
-        .review-card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); margin-bottom: 20px; display: flex; gap: 15px; align-items: flex-start;}
-        .avatar { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; flex-shrink: 0; }
-        .review-content { flex: 1; }
-        .review-content h4 { margin: 0 0 5px; font-size: 1em; color: #222; }
-        .review-content p { margin: 0 0 10px; font-size: 0.95em; color: #555; line-height: 1.4; }
-        
-        .meta { font-size: 0.8em; color: #999; display: flex; justify-content: space-between; align-items: center; margin-top: 5px;}
-        
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.5em; margin-bottom: 40px; }
+
+        /* 单个评论卡片容器 - 对应 w-[500px] flex-col gap-3 */
+        .review-card {
+            width: 500px; /* 固定宽度 500px */
+            max-width: 90vw; /* 手机上自适应 */
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* gap-3 */
+            margin-bottom: 40px; /*以此拉开每个评论的间距*/
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        /* 用户头部 - 对应 w-[177px] h-[36px] */
+        .user-header {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        /* 头像 - 对应 Ellipse 7 */
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* 名字 - 对应 text-[#111111] font-semibold */
+        .user-name {
+            color: #111111;
+            font-size: 14px; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            font-family: 'Roboto', sans-serif;
+            line-height: 24px;
+        }
+
+        /* 评论内容区 - 对应 flex-col gap-2.5 */
+        .content-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* gap-2.5 */
+            width: 100%;
+        }
+
+        /* 文字 - 对应 text-[#333333] leading-5 */
+        .review-text {
+            color: #333333;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px; 
+            line-height: 20px; /* leading-5 */
+            margin: 0;
+        }
+
+        /* 底部 Meta 信息 - 对应 flex-row gap-3 */
+        .review-meta {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px; /* gap-3 */
+            margin-top: 5px;
+        }
+
+        /* 红色 Like Reply - 对应 text-[#E11B22] */
+        .meta-action {
+            color: #E11B22;
+            font-size: 12px; /* text-xs */
+            font-weight: 400;
+            line-height: 14px;
+            cursor: pointer;
+        }
+
+        /* 灰色时间 - 对应 text-[#666666] */
+        .meta-time {
+            color: #666666;
+            font-size: 12px; /* text-xs */
+            font-weight: 400;
+            line-height: 14px;
+        }
+
+        /* 弹窗 */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; }
-        .modal-content { background: white; padding: 40px; border-radius: 15px; text-align: center; max-width: 320px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .btn { background: #d4af37; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin-top: 20px; font-size: 1em; }
+        .modal-content { background: white; padding: 40px; border-radius: 15px; text-align: center; max-width: 320px; }
+        .btn { background: #d4af37; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; margin-top: 20px; }
+
     </style>
 </head>
 <body>
@@ -58,7 +173,7 @@
     </div>
 
     <div class="timer-section">
-        <div class="timer-label">Choose a mystery box to participate in the giveaway</div>
+        <div style="margin-bottom:10px;">Choose a mystery box to participate in the giveaway</div>
         <div class="timer" id="timer">05:00</div>
     </div>
 
@@ -75,12 +190,18 @@
         </div>
     </div>
 
+    <!-- 评论区域 -->
     <div class="reviews-section">
         <h3 class="section-title">User Reviews</h3>
         <p style="text-align:center; color:#999; margin-bottom:30px;">See what our users are saying</p>
-        <div id="reviews-list">Loading...</div>
+        
+        <div id="reviews-list">
+            <!-- JS 将在这里插入 HTML -->
+            Loading reviews...
+        </div>
     </div>
 
+    <!-- 弹窗 -->
     <div class="modal" id="resultModal">
         <div class="modal-content">
             <h2 id="modalTitle">Loading...</h2>
@@ -90,9 +211,12 @@
     </div>
 
     <script>
-        // 配置您的后台地址
+        // ==========================================
+        // 请确保这里是您的 Render 地址
+        // ==========================================
         const API_BASE_URL = "https://giveaway-backend-w2qa.onrender.com"; 
 
+        // 倒计时
         let timeLeft = 300;
         setInterval(() => {
             if(timeLeft <= 0) return;
@@ -102,43 +226,58 @@
             document.getElementById('timer').innerText = `0${m}:${s < 10 ? '0'+s : s}`;
         }, 1000);
 
+        // 获取数据并渲染
         async function fetchData() {
             try {
+                // 1. 获取统计
                 const statRes = await fetch(`${API_BASE_URL}/stats`);
                 const statData = await statRes.json();
                 document.getElementById('participant-count').innerText = statData.participants.toLocaleString();
                 document.getElementById('satisfaction-rate').innerText = statData.satisfaction + '%';
 
+                // 2. 获取评论
                 const revRes = await fetch(`${API_BASE_URL}/reviews`);
                 const reviews = await revRes.json();
                 const container = document.getElementById('reviews-list');
                 
-                // --- 重点修改：精准控制图片尺寸 ---
+                // --- 渲染循环 ---
                 container.innerHTML = reviews.map((r, index) => {
-                    // 默认尺寸 (正方形 200x200)
+                    // 图片尺寸逻辑
+                    // 默认: 200x200
                     let imgStyle = "width: 200px; height: 200px;";
                     
-                    // 如果是第1张图 (索引为0)，改为 200x270
+                    // 第一张 (Thanh): 200x270
                     if (index === 0) {
                         imgStyle = "width: 200px; height: 270px;";
                     }
                     
-                    // 加上通用样式：圆角、object-fit:cover (防止拉伸)
-                    imgStyle += " object-fit: cover; border-radius: 8px; margin-top: 8px; display: block; background: #eee;";
+                    // 添加 object-fit 防止变形，圆角
+                    imgStyle += " object-fit: cover; border-radius: 0px; display: block;";
 
+                    // 生成 HTML (完全对应 MasterGo 结构)
                     return `
                     <div class="review-card">
-                        <div class="avatar" style="background:${r.avatar_color}">${r.user_name[0]}</div>
-                        <div class="review-content">
-                            <h4>${r.user_name}</h4>
-                            <p>${r.content}</p>
+                        <!-- 头部: 头像 + 名字 -->
+                        <div class="user-header">
+                            <div class="user-avatar" style="background:${r.avatar_color}">
+                                ${r.user_name[0]}
+                            </div>
+                            <span class="user-name">${r.user_name}</span>
+                        </div>
+
+                        <!-- 内容: 文字 + 图片 + Meta -->
+                        <div class="content-body">
+                            <p class="review-text">
+                                ${r.content}
+                            </p>
                             
-                            <!-- 图片渲染 -->
+                            <!-- 图片 (如果后台有图片则显示) -->
                             ${r.image ? `<img src="${r.image}" style="${imgStyle}" onerror="this.style.display='none'">` : ''}
                             
-                            <div class="meta">
-                                <span style="color:#e74c3c">Like: Reply</span>
-                                <span>${r.time_ago}</span>
+                            <!-- 底部信息 -->
+                            <div class="review-meta">
+                                <span class="meta-action">Like · Reply ·</span>
+                                <span class="meta-time">${r.time_ago}</span>
                             </div>
                         </div>
                     </div>
@@ -147,9 +286,11 @@
                 
             } catch (e) {
                 console.error("Error:", e);
+                document.getElementById('reviews-list').innerText = "Loading failed.";
             }
         }
 
+        // 生成盒子
         const grid = document.getElementById('box-grid');
         for(let i=0; i<6; i++) {
             const box = document.createElement('div');
@@ -159,6 +300,7 @@
             grid.appendChild(box);
         }
 
+        // 抽奖
         async function play(boxId) {
             const modal = document.getElementById('resultModal');
             document.getElementById('modalTitle').innerText = "Opening...";
